@@ -2,7 +2,7 @@ import numpy as np
 
 euclidean_distance = lambda x1, y1, x2, y2 : ((x2-x1)**2+(y2-y1)**2)**0.5
 
-def Astar(graph, source, dest):
+def AStar(graph, source, dest):
   fscore = np.ones((len(graph), len(graph[0]))) * np.inf
   gscore = np.ones((len(graph), len(graph[0]))) * np.inf
   parents =  np.empty((len(graph), len(graph[0]),2)).astype("int")
@@ -10,7 +10,7 @@ def Astar(graph, source, dest):
   gscore[source[0]][source[1]] = 0
   queue = [graph[n].copy() for n in range(len(graph))]
   visited = np.zeros((len(graph), len(graph[0]))).astype(bool)
-  while sum(sum(row) for row in queue):
+  while sum(sum(row) for row in queue) > 1:
     min_index = []
     min_val = np.inf
     for x, row in enumerate(fscore):
@@ -18,6 +18,7 @@ def Astar(graph, source, dest):
         if min_val > val and queue[x][y]:
           min_val = gscore[x][y]
           min_index = [x, y]
+    print(gscore[x][y], dest)
     if min_index[0] == dest[0] and min_index[1] == dest[1]:
       [x, y] = min_index.copy()
       path = [[x, y]]
@@ -37,4 +38,4 @@ def Astar(graph, source, dest):
             fscore[x][y] = f
             gscore[x][y] = g
             parents[x][y] = min_index.copy()
-  return "Path not found"
+  return None

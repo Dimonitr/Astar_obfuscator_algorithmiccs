@@ -3,7 +3,7 @@ import telebot
 from urllib.request import urlretrieve
 import subprocess
 
-BOT_TOKEN = '<BOT_TOKEN>' #Placeholder for the Telegram bot token
+BOT_TOKEN = '<BOT_TOKEN>' #placeholder for the Telegram bot token
 
 bot = telebot.TeleBot(BOT_TOKEN, num_threads=40)
 

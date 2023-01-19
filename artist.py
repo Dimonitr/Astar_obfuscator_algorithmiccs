@@ -33,10 +33,10 @@ def astar_obfuscator(img, step=10, downsize_w_to=100, return_300x300=False):
 
         for h in range(100):   
           [src,dst] = sample(nonzero, 2)
-          path = AStar(mask).search(src, dst)
+          path = AStar(mask, src, dst)
           if path is not None:
             for p in path:
-              paths[p[0],p[1],c] = ten-20
+              paths[p[1],p[0],c] = ten-20
       else:
           return cv2.resize(paths, (org_w,org_h), interpolation = cv2.INTER_AREA)
 
