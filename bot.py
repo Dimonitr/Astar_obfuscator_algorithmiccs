@@ -5,7 +5,7 @@ import subprocess
 
 BOT_TOKEN = '<BOT_TOKEN>' #placeholder for the Telegram bot token
 
-bot = telebot.TeleBot(BOT_TOKEN, num_threads=40)
+bot = telebot.TeleBot(BOT_TOKEN, num_threads=128)
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
